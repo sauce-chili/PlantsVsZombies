@@ -1,0 +1,20 @@
+package vstu.oop.view.component;
+
+import javax.swing.*;
+import java.awt.*;
+
+import static java.util.Objects.requireNonNull;
+
+public abstract class Component<M> extends JComponent {
+
+    private final M model;
+
+    protected Component(M model) {
+        requireNonNull(model);
+        this.model = model;
+    }
+
+    protected M getModel() {
+        return model;
+    }
+}

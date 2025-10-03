@@ -41,7 +41,7 @@ public class ComponentFactory {
         };
     }
 
-    public static Component<?> createGameObject(GameObject go) {
+    private static Component<?> createGameObject(GameObject go) {
         var img = sprites.getOrDefault(go.getClass(), null);
         ImageIcon icon = img != null ? new ImageIcon(img) : null;
         return switch (go) {

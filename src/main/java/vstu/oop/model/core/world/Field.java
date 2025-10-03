@@ -151,9 +151,6 @@ public class Field {
 
         Set<Zombie> zombies = zombieSpawnersOnLine.stream()
                 .map(entry -> {
-                    requireNonNull(entry.first());
-                    requireNonNull(entry.second());
-
                     int line = entry.first();
                     Function<Position, Zombie> spawner = entry.second();
 

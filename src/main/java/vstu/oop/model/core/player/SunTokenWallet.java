@@ -1,5 +1,7 @@
 package vstu.oop.model.core.player;
 
+import static java.lang.Math.max;
+
 class SunTokenWallet {
     private int sunTokens;
     private final int maxSunTokens;
@@ -42,6 +44,10 @@ class SunTokenWallet {
         int was = this.sunTokens;
         this.sunTokens += amount;
 
+        fireIfSunTokensCountChanged(was);
+    }
+
+    private void fireIfSunTokensCountChanged(int was) {
         if (onSunTokensCountChanged != null && was != sunTokens) {
             onSunTokensCountChanged.onSunTokensCountChanged(was, sunTokens);
         }
@@ -57,11 +63,9 @@ class SunTokenWallet {
         }
 
         int was = this.sunTokens;
-        this.sunTokens = Math.max(this.sunTokens - amount, 0);
+        this.sunTokens = max(this.sunTokens - amount, 0);
 
-        if (onSunTokensCountChanged != null && was != sunTokens) {
-            onSunTokensCountChanged.onSunTokensCountChanged(was, sunTokens);
-        }
+        fireIfSunTokensCountChanged(was);
     }
 
     int getSunTokens() {

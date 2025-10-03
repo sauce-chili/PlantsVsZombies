@@ -59,8 +59,12 @@ public class Field {
 
     public void update(long currentTick) {
         projectilesContainer.update(currentTick); // обновляем снаряды
-        getMobs().forEach(mob -> mob.act(currentTick)); // запрашиваем активность у мобов
+        requestActivity(currentTick); // запрашиваем активность у мобов
         removeDiadMobs(); // удаляем мертвых мобов
+    }
+
+    private void requestActivity(long tick) {
+        getMobs().forEach(mob -> mob.act(tick));
     }
 
     private Stream<Mob> getMobs() {

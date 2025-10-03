@@ -17,13 +17,14 @@ public class MovementEngine {
         this.movable = movable;
     }
 
-    public boolean move(long currentTick) {
+    public boolean move(long tick) {
 
         if (movable.isReachedTargetPosition()) {
             return true;
         }
 
         if (wasNoMovement()) {
+            setLastMoveTime(tick);
             return false;
         }
 

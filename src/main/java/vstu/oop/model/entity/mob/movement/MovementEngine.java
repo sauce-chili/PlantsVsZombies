@@ -23,8 +23,7 @@ public class MovementEngine {
             return true;
         }
 
-        if (isNull(getLastMoveTime())) {
-            setLastMoveTime(currentTick);
+        if (wasNoMovement()) {
             return false;
         }
 
@@ -37,9 +36,13 @@ public class MovementEngine {
         );
         movable.moveTo(newPosition);
 
-        setLastMoveTime(currentTick);
+        setLastMoveTime(tick);
 
         return false;
+    }
+
+    private boolean wasNoMovement() {
+        return isNull(getLastMoveTime());
     }
 
     private Long getLastMoveTime() {

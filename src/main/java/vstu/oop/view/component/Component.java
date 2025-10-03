@@ -1,7 +1,6 @@
 package vstu.oop.view.component;
 
 import javax.swing.*;
-import java.awt.*;
 
 import static java.util.Objects.requireNonNull;
 
@@ -14,7 +13,7 @@ public abstract class Component<M> extends JComponent {
         this.model = model;
     }
 
-    protected M getModel() {
+    protected M model() {
         return model;
     }
 }

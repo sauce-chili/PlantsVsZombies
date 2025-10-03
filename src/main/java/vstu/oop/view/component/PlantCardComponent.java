@@ -152,6 +152,6 @@ public class PlantCardComponent extends Component<PlantInfo> {
     }
 
     public PlantInfo getPlantInfo() {
-        return getModel();
+        return model();
     }
 }

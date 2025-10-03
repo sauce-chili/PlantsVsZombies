@@ -41,7 +41,7 @@ public class CellComponent extends Component<Cell> {
         super.paintComponent(g);
         // Границы ячейки
 
-        if (getModel() instanceof DisabledCell) {
+        if (model() instanceof DisabledCell) {
             return;
         }
 
@@ -56,8 +56,8 @@ public class CellComponent extends Component<Cell> {
 
 //        // Рисуем красную точку в центре
 //        g.setColor(Color.RED);
-//        int centerX = getModel().width() / 2;
-//        int centerY = getModel().height() / 2;
+//        int centerX = model().width() / 2;
+//        int centerY = model().height() / 2;
 //        int diameter = 4; // Диаметр точки
 //        g.fillOval(centerX - diameter/2, centerY - diameter/2, diameter, diameter);
     }

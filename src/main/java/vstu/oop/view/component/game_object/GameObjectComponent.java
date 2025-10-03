@@ -17,7 +17,7 @@ public abstract class GameObjectComponent<Obj extends GameObject> extends Compon
 
     protected GameObjectComponent(Obj model, ImageIcon sprite) {
         super(model);
-        Hitbox hitbox = getModel().getHitbox();
+        Hitbox hitbox = model().getHitbox();
         Position topLeft = hitbox.getTopLeft();
         HitboxParameters hp = hitbox.getHitboxParameters();
         setPreferredSize(new Dimension(hp.width(), hp.height()));
@@ -45,7 +45,7 @@ public abstract class GameObjectComponent<Obj extends GameObject> extends Compon
             g2d.setColor(Color.RED);
             g2d.setStroke(new BasicStroke(1));
 
-            Hitbox hitbox = getModel().getHitbox();
+            Hitbox hitbox = model().getHitbox();
             Point2D.Double[] vertices = hitbox.getVertices();
 
             Position topLeft = hitbox.getTopLeft();

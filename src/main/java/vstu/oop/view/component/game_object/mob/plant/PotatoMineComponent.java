@@ -27,8 +27,8 @@ public class PotatoMineComponent extends PlantComponent<PotatoMine> {
 
     @Override
     protected void paintComponent(Graphics g) {
-        boolean isGrowth = getModel().behavior().isGrowth();
-        boolean wasExplosion = getModel().behavior().wasExplosion();
+        boolean isGrowth = model().behavior().isGrowth();
+        boolean wasExplosion = model().behavior().wasExplosion();
         if (isGrowth) {
             setIfNewSprite(POTATO_MINE);
         } else if (wasExplosion) {

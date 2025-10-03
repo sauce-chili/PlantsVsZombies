@@ -62,16 +62,7 @@ public class Game {
 
     private void finish(GameState reason) {
         stop();
-        if (reason == GameState.COMPLETED) {
-            fireGameWined();
-        } else if (reason == GameState.FAILED) {
-            fireGameLost();
-        }
-    }
-
-    public void exit() {
-        stop();
-        listeners.clear();
+        fireGameEnded(reason);
     }
 
     private void stop() {
@@ -87,6 +78,19 @@ public class Game {
         field = null;
         player = null;
         zombieSpawner = null;
+    }
+
+    private void fireGameEnded(GameState reason) {
+        if (reason == GameState.COMPLETED) {
+            fireGameWined();
+        } else if (reason == GameState.FAILED) {
+            fireGameLost();
+        }
+    }
+
+    public void exit() {
+        stop();
+        listeners.clear();
     }
 
     private boolean gameEnded(GameState state) {

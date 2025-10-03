@@ -27,8 +27,7 @@ public class MovementEngine {
             return false;
         }
 
-        long delta = currentTick - getLastMoveTime();
-        long moveDistance = (delta * movable.getSpeed()) / SPEED_COEFFICIENT;
+        long moveDistance = calculateMoveDistance(tick);
 
         Position newPosition = movable.getPosition().move(
                 movable.getMoveDirection(),
@@ -47,6 +46,12 @@ public class MovementEngine {
 
     private Long getLastMoveTime() {
         return lastMoveTime;
+    }
+
+    private long calculateMoveDistance(long tick) {
+        long delta = tick - getLastMoveTime();
+        long moveDistance = (delta * movable.getSpeed()) / SPEED_COEFFICIENT;
+        return moveDistance;
     }
 
     private void setLastMoveTime(Long lastMoveTime) {

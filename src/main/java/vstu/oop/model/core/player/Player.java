@@ -43,12 +43,12 @@ public class Player {
             return Optional.of(new IllegalStateException("No catalogue has been set."));
         }
 
-        if (cell.planted()) {
-            return Optional.of(new IllegalArgumentException("Cannot place plant in already occupied cell"));
+        if (selectedPlantAbsent()) {
+            return Optional.of(new IllegalStateException("Before purchasing and planting a plant, it must be selected."));
         }
 
-        if (selectedPlantToBuy == null) {
-            return Optional.of(new IllegalStateException("Before purchasing and planting a plant, it must be selected."));
+        if (cell.planted()) {
+            return Optional.of(new IllegalArgumentException("Cannot place plant in already occupied cell"));
         }
 
         if (catalogue.hasNotPlant(selectedPlantToBuy)) {
@@ -67,6 +67,10 @@ public class Player {
         firePlantPlaced(plant, cell);
 
         return Optional.empty();
+    }
+
+    private boolean selectedPlantAbsent() {
+        return selectedPlantToBuy == null;
     }
 
     public boolean canBeBought(Class<? extends Plant> plant) {
